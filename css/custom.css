@@ -1,8 +1,6 @@
 /*
 Custom Css
 */
-
-/*Angel ventana de pago*/
 /* Estilos para la ventana modal */
 .modal {
     display: none;
@@ -64,7 +62,7 @@ Custom Css
     border-radius: 5px;
 }
 
-.modal-content button[type="submit"] {
+.modal-content button[type="submit"] {  
     background-color: #28a745;
     color: white;
     padding: 10px 20px;
@@ -77,4 +75,13 @@ Custom Css
 .modal-content button[type="submit"]:hover {
     background-color: #218838;
 }
-/*fin Angel*/
+
+#mensaje-seguimiento {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+#estado-compra {
+    font-size: 16px;
+    margin-top: 20px;
+}

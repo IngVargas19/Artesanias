@@ -182,7 +182,7 @@
             <!-- Ventana modal para pagar -->
             <div id="modal-pago" class="modal">
                 <div class="modal-content">
-                    <span class="close">&times;</span>
+                    <span class="close close-pago">&times;</span>
                     <h2>Pago</h2>
                     <form id="form-pago">
                         <label for="nombre">Nombre</label>
@@ -196,35 +196,104 @@
                         <button type="submit" class="btn btn-success">Completar Pago</button>
                     </form>
                 </div>
-            </div>             
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                const modal = document.getElementById('modal-pago');
-                const btnPagar = document.getElementById('boton-pagar');
-                const spanClose = document.getElementsByClassName('close')[0];
+            </div>
             
-                btnPagar.onclick = function() {
-                    modal.style.display = 'block';
-                }
+            <!-- Ventana modal para seguimiento -->
+            <div id="modal-seguimiento" class="modal">
+                <div class="modal-content">
+                    <span class="close close-seguimiento">&times;</span>
+                    <h2>Seguimiento de Compra</h2>
+                    <p id="mensaje-seguimiento"></p>
+                    <button id="cerrar-seguimiento" class="btn btn-primary">Cerrar</button>
+                </div>
+            </div>
             
-                spanClose.onclick = function() {
-                    modal.style.display = 'none';
-                }
-            
-                window.onclick = function(event) {
-                    if (event.target == modal){
-                        modal.style.display = 'none';
-                    }
-                }
-            
-                document.getElementById('form-pago').addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    alert('Pago completado exitosamente!');
-                    modal.style.display = 'none';
-                    // Aquí puedes agregar lógica para procesar el pago
-                });
-            });
-            </script>
+            <!-- Ventana modal para rastrear el pedido -->
+            <div id="modal-rastrear" class="modal">
+                <div class="modal-content">
+                    <span class="close close-rastrear">&times;</span>
+                    <h2>Rastrear Pedido</h2>
+                    <form id="form-rastrear">
+                        <label for="codigo-seguimiento">Ingrese su Código de Seguimiento</label>
+                        <input type="text" id="codigo-seguimiento" required>
+                        <button type="submit" class="btn btn-info">Rastrear</button>
+                    </form>
+                    <p id="estado-compra"></p>
+                </div>
+            </div>
+            <button id="boton-rastrear" class="btn btn-secondary">Rastrear Pedido</button>                                    
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const modalPago = document.getElementById('modal-pago');
+    const modalSeguimiento = document.getElementById('modal-seguimiento');
+    const modalRastrear = document.getElementById('modal-rastrear');
+    const btnPagar = document.getElementById('boton-pagar');
+    const btnRastrear = document.getElementById('boton-rastrear');
+    const spanClosePago = document.querySelector('.close-pago');
+    const spanCloseSeguimiento = document.querySelector('.close-seguimiento');
+    const spanCloseRastrear = document.querySelector('.close-rastrear');
+    const btnCerrarSeguimiento = document.getElementById('cerrar-seguimiento');
+    const mensajeSeguimiento = document.getElementById('mensaje-seguimiento');
+    const estadoCompra = document.getElementById('estado-compra');
+
+    let estadoActual = ["Saliendo", "Viajando", "Llego a su ciudad", "Entregado"];
+    let trackingInfo = {};
+
+    btnPagar.onclick = function() {
+        modalPago.style.display = 'block';
+    }
+
+    spanClosePago.onclick = function() {
+        modalPago.style.display = 'none';
+    }
+
+    spanCloseSeguimiento.onclick = function() {
+        modalSeguimiento.style.display = 'none';
+    }
+
+    btnCerrarSeguimiento.onclick = function() {
+        modalSeguimiento.style.display = 'none';
+    }
+
+    spanCloseRastrear.onclick = function() {
+        modalRastrear.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modalPago) {
+            modalPago.style.display = 'none';
+        } else if (event.target == modalSeguimiento) {
+            modalSeguimiento.style.display = 'none';
+        } else if (event.target == modalRastrear) {
+            modalRastrear.style.display = 'none';
+        }
+    }
+
+    document.getElementById('form-pago').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Generar un número de seguimiento aleatorio
+        const numeroSeguimiento = Math.floor(Math.random() * 1000000000);
+        trackingInfo[numeroSeguimiento] = 0; // Comenzar en el estado "Saliendo"
+        mensajeSeguimiento.innerText = `¡Pago completado exitosamente! Su número de seguimiento es: ${numeroSeguimiento}`;
+        modalPago.style.display = 'none';
+        modalSeguimiento.style.display = 'block';
+    });
+
+    btnRastrear.onclick = function() {
+        modalRastrear.style.display = 'block';
+    }
+
+    document.getElementById('form-rastrear').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const codigoSeguimiento = document.getElementById('codigo-seguimiento').value.trim();
+        if (trackingInfo.hasOwnProperty(codigoSeguimiento)) {
+            estadoCompra.innerText = `El estado de su compra es: ${estadoActual[trackingInfo[codigoSeguimiento]]}`;
+        } else {
+            estadoCompra.innerText = "Código de seguimiento no válido.";
+        }
+    });
+});
+</script>
 <!-- paginacion -->
             <div class="row">
                 <ul class="pagination pagination-lg justify-content-end">
