@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProdArt- Productos</title>
+    <title>Productos</title>
     <!-- iconos-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <!-- css-->
@@ -19,7 +19,7 @@
                 <div class="w-100 d-flex justify-content-between">
                     <div>
                         <i class="fa fa-envelope mx-2"></i>
-                        <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@prodart.com">info@prodart.com</a>
+                        <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@artesanal.com">info@artesanal.com</a>
                         <i class="fa fa-phone mx-2"></i>
                         <a class="navbar-sm-brand text-light text-decoration-none" href="tel: 057-320-202-02-02">057-320-202-02-02</a>
                     </div>
@@ -35,29 +35,50 @@
         <!-- fin encabezado-->
         <!-- inicio menu-->
         <nav class="navbar navbar-expand-lg navbar-light shadow">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#opciones">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="container d-flex justify-content-between align-items-center">
-                <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                    ProdArt
-                </a>
-                <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between" id="opciones">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="productos.html">Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contacto.html">Contacto</a>
-                        </li>
-                    </ul>
+
+                <a class="logo" href="index.html"><img src="/img/artesanal.svg" alt="logo artesanal" style="width: 250px;"></a>
+                <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                    <div class="flex-fill">
+                        <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="compras.html">Compras</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="productos.html">Productos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contacto.html">Contacto</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="navbar align-self-center d-flex">
+                        <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="inputMobileSearch" placeholder="Buscar ...">
+                                <div class="input-group-text">
+                                    <i class="fa fa-fw fa-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
+                            <i class="fa fa-fw fa-search text-dark mr-2"></i>
+                        </a>
+                        <a class="nav-icon position-relative text-decoration-none" href="/html/compras.html">
+                            <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                           <span id="carrito-value" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                        </a>
+                        <a class="nav-icon position-relative text-decoration-none" href="#">
+                            <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                            <span id="contador" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
-    
-         </nav>
+        </nav>
     <!-- fin menu-->
      <!-- cuerpo-->
      <section class="bg-light">
@@ -65,7 +86,7 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="/img/shop_04.jpg">
+                        <img class="card-img img-fluid" src="/img/hamacas/hamaca-doble-con-palo-en-hilaza, precio 150.000.webp">
                     </div>
                     <div class="row">
                         <div class="col-1 align-self-center">
@@ -80,17 +101,17 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="/img/mochila1.jpg">
+                                                <img class="card-img img-fluid" src="/img/hamacas/hamaca-luciana-artesanal-con-flecos precio 150.000.webp">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="/img/mochila2.jpg">
+                                                <img class="card-img img-fluid" src="/img/hamacas/hamaca-luciana-costena-con-flecos-costeña precio 150.000.webp">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="/img/mochila3.jpg">
+                                                <img class="card-img img-fluid" src="/img/hamacas/hamaca-silla-tipo-columpio precio 150.000.webp">
                                             </a>
                                         </div>
                                     </div>
@@ -109,8 +130,8 @@
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h2">Mochila wayuu azul 6...</h1>
-                            <p class="h3 py-2">$120.000</p>
+                            <h1 class="h2">Hamaca Doble con Palo en Hilaza</h1>
+                            <p class="h3 py-2">$150.000</p>
                             <p class="py-2">
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
@@ -127,7 +148,7 @@
                                     <h6>Color :</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>Varios colores / Blanco-negro</strong></p>
+                                    <p class="text-muted"><strong>Beige</strong></p>
                                 </li>
                             </ul>
 
@@ -210,7 +231,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light log">ProdArt</h2>
+                    <h2 class="h2 text-success border-bottom pb-3 border-light log">Artesanl</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
@@ -223,7 +244,7 @@
                         </li>
                         <li>
                             <i class="fa fa-envelope mx-2"></i>
-                            <a class="text-decoration-none" href="mailto:info@prodart.com">info@prodart.com</a>
+                            <a class="text-decoration-none" href="mailto:info@artesanal.com">info@artesanal.com</a>
                         </li>
                     </ul>
                 </div>
@@ -232,18 +253,15 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li><a class="text-decoration-none" href="compras.html">Sombreros</a></li>
                         <li><a class="text-decoration-none" href="compras.html">Hamacas</a></li>
-                        <li><a class="text-decoration-none" href="compras.html">Platería</a></li>
                         <li><a class="text-decoration-none" href="compras.html">Bolsos</a></li>
                         <li><a class="text-decoration-none" href="compras.html">Mochilas</a></li>
-                        <li><a class="text-decoration-none" href="compras.html">Tapetes</a></li>
+                        <li><a class="text-decoration-none" href="compras.html">Accesorios</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Mas información</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li><a class="text-decoration-none" href="index.html">Home</a></li>
-                        <li><a class="text-decoration-none" href="acercade.html">A cerca de</a></li>
-                        <li><a class="text-decoration-none" href="compras.html">Compras</a></li>
                         <li><a class="text-decoration-none" href="productos.html">Productos</a></li>
                         <li><a class="text-decoration-none" href="contacto.html">Contacto</a></li>
                     </ul>
@@ -283,7 +301,7 @@
             <div class="container">
                 <div class="row pt-2">
                     <p class="text-left text-light">
-                        Copyright &copy; 2024 - ProdArt | Diseñado por: Pablo Carr
+                        Copyright &copy; 2024 - Artesanal
                     </p>
                 </div>
             </div>
