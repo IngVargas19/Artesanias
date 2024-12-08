@@ -24,27 +24,112 @@ document.addEventListener('DOMContentLoaded', () => {
             imagen: '/img/feature_prod_02.jpg',
             categoria: 'sombreros'
         },
+        
         {
             id: 4,
-            nombre: 'Mochila wayuu azul 6',
+            nombre: 'Sombrero Borsalino',
             precio: 120000,
-            imagen: '/img/shop_04.jpg',
-            categoria: 'mochilas'
+            imagen: '/img/sombreros/Sombrero-Aguadeno-Borsalino-precio 120.000.webp',
+            categoria: 'sombreros'
         },
         {
             id: 5,
-            nombre: 'Bolso en fique',
-            precio: 120000,
-            imagen: '/img/shop_03.jpg',
-            categoria: 'bolsos'
+            nombre: 'Sombrero Aguadeno Brio',
+            precio: 130000,
+            imagen: '/img/sombreros/sombrero-aguadeno-brio precio 130.000.webp',
+            categoria: 'sombreros'
         },
         {
             id: 6,
-            nombre: 'Hamaca',
-            precio: 120000,
-            imagen: '/img/category_img_02.jpg',
+            nombre: 'Sombrero Aguadeno Marlboro',
+            precio: 130000,
+            imagen: '/img/sombreros/Sombrero-aguadeno-Marlboro precio 130.000.webp',
+            categoria: 'sombreros'
+        },
+        {
+            id: 7,
+            nombre: 'Sombrero Cordobes',
+            precio: 130000,
+            imagen: '/img/sombreros/Sombrero-cordobes-130.000.webp',
+            categoria: 'sombreros'
+        },
+        {
+            id: 8,
+            nombre: 'Hamaca Luciana Costeña',
+            precio: 150000,
+            imagen: '/img/hamacas/hamaca-luciana-costena-con-flecos-costeña precio 150.000.webp',
             categoria: 'hamacas'
-        }
+        },
+        {
+            id: 9,
+            nombre: 'Hamaca Marroqui',
+            precio: 230000,
+            imagen: '/img/hamacas/hamaca-marroquis-extradoble-sin-flecos-abierta, precio 230.000.webp',
+            categoria: 'hamacas'
+        },
+        {
+            id: 10,
+            nombre: 'Hamaca Luciana',
+            precio: 150000,
+            imagen: '/img/hamacas/hamaca-luciana-artesanal-con-flecos precio 150.000.webp',
+            categoria: 'hamacas'
+        },
+        {
+            id: 11,
+            nombre: 'Hamaca Doble',
+            precio: 150000,
+            imagen: '/img/hamacas/hamaca-doble-con-palo-en-hilaza, precio 150.000.webp',
+            categoria: 'hamacas'
+        },
+        {
+            id: 12,
+            nombre: 'Hamaca Silla Tipo Columpio',
+            precio: 150000,
+            imagen: '/img/hamacas/hamaca-silla-tipo-columpio precio 150.000.webp',
+            categoria: 'hamacas'
+        },
+        {
+            id: 13,
+            nombre: 'Mochila Arhuaca Grande',
+            precio: 526000,
+            imagen: '/img/mochilas/mochila arhuaca grande original tejida a mano, precio 526.000.webp',
+            categoria: 'mochilas'
+        },
+        {
+            id: 14,
+            nombre: 'Mochila Arhuaca Mediana',
+            precio: 488000,
+            imagen: '/img/mochilas/mochila arhuca mediana original tejida a mano, precio 488.000.webp',
+            categoria: 'mochilas'
+        },
+        {
+            id: 15,
+            nombre: 'Mochila en Fique Original',
+            precio: 223000,
+            imagen: '/img/mochilas/mochila en fique original tejida a mano, precio 223.000.webp',
+            categoria: 'mochilas'
+        },
+        {
+            id: 16,
+            nombre: 'Mochila Fina Wayuu',
+            precio: 405000,
+            imagen: '/img/mochilas/mochila fina wayuu original tejida a mano precio405.000.webp',
+            categoria: 'mochilas'
+        },
+        {
+            id: 17,
+            nombre: 'Mochila Wayuu Original',
+            precio: 445000,
+            imagen: '/img/mochilas/mochila fina wayuu original tejida a mano, precio 445.000.webp',
+            categoria: 'mochilas'
+        },
+        {
+            id: 18,
+            nombre: 'Mochila Wayuu Colombiana',
+            precio: 166000,
+            imagen: '/img/mochilas/mochila wayuu colombiana precio 166.000.jpg',
+            categoria: 'mochilas'
+        },
     ];
 
     let carrito = [];
