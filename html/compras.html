@@ -8,10 +8,10 @@
     <link rel="apple-touch-icon" href="/img/">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <!-- css-->
-     <link rel="stylesheet" href="/css/bootstrap.min.css">
-     <link rel="stylesheet" href="/css/templatemo.css">
-     <link rel="stylesheet" href="/css/custom.css">
-     <link rel="stylesheet" href="/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/templatemo.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/fontawesome.min.css">
 </head>
 <body>
         <!-- inicio encabezado-->
@@ -40,8 +40,7 @@
     
                 <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
                     ProdArt
-                </a>
-    
+                </a>  
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -50,7 +49,7 @@
                     <div class="flex-fill">
                         <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Home</a>
+                                <a class="nav-link" href="index.html">Inicio</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="compras.html">Compras</a>
@@ -75,7 +74,7 @@
                         <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                             <i class="fa fa-fw fa-search text-dark mr-2"></i>
                         </a>
-                        <a class="nav-icon position-relative text-decoration-none" href="#">
+                        <a class="nav-icon position-relative text-decoration-none" href="/html/compras.html">
                             <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                             <span id="carrito-value" class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                         </a>
@@ -161,8 +160,8 @@
             </div>
             <!-- productos en el carro -->
             <!-- fin de productos -->
-             <!-- carrito -->
-             <div class="container">
+            <!-- carrito -->
+            <div class="container">
                 <div class="row">
                     <!-- Elementos generados a partir del JSON -->
                     <main id="items" class="col-sm-8 row"></main>
@@ -175,12 +174,126 @@
                         <!-- Precio total -->
                         <p class="text-right">Total: $ <span id="total"></span></p>
                         <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
-                        <button class="btn btn-info">
-                        <a href="pago.html" target="target_blank">Pagar</a>
-                        </button>
+                        <button id="boton-pagar" class="btn btn-info">Pagar</button>
                     </aside>
                 </div>
             </div>
+            
+            <!-- Ventana modal para pagar -->
+            <div id="modal-pago" class="modal">
+                <div class="modal-content">
+                    <span class="close close-pago">&times;</span>
+                    <h2>Pago</h2>
+                    <form id="form-pago">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" required>
+                        <label for="tarjeta">Número de Tarjeta</label>
+                        <input type="text" id="tarjeta" required>
+                        <label for="fecha">Fecha de Expiración</label>
+                        <input type="text" id="fecha" required>
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" required>
+                        <button type="submit" class="btn btn-success">Completar Pago</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Ventana modal para seguimiento -->
+            <div id="modal-seguimiento" class="modal">
+                <div class="modal-content">
+                    <span class="close close-seguimiento">&times;</span>
+                    <h2>Seguimiento de Compra</h2>
+                    <p id="mensaje-seguimiento"></p>
+                    <button id="cerrar-seguimiento" class="btn btn-primary">Cerrar</button>
+                </div>
+            </div>
+            
+            <!-- Ventana modal para rastrear el pedido -->
+            <div id="modal-rastrear" class="modal">
+                <div class="modal-content">
+                    <span class="close close-rastrear">&times;</span>
+                    <h2>Rastrear Pedido</h2>
+                    <form id="form-rastrear">
+                        <label for="codigo-seguimiento">Ingrese su Código de Seguimiento</label>
+                        <input type="text" id="codigo-seguimiento" required>
+                        <button type="submit" class="btn btn-info">Rastrear</button>
+                    </form>
+                    <p id="estado-compra"></p>
+                </div>
+            </div>
+            <button id="boton-rastrear" class="btn btn-secondary">Rastrear Pedido</button>                                    
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const modalPago = document.getElementById('modal-pago');
+    const modalSeguimiento = document.getElementById('modal-seguimiento');
+    const modalRastrear = document.getElementById('modal-rastrear');
+    const btnPagar = document.getElementById('boton-pagar');
+    const btnRastrear = document.getElementById('boton-rastrear');
+    const spanClosePago = document.querySelector('.close-pago');
+    const spanCloseSeguimiento = document.querySelector('.close-seguimiento');
+    const spanCloseRastrear = document.querySelector('.close-rastrear');
+    const btnCerrarSeguimiento = document.getElementById('cerrar-seguimiento');
+    const mensajeSeguimiento = document.getElementById('mensaje-seguimiento');
+    const estadoCompra = document.getElementById('estado-compra');
+
+    let estadoActual = ["Saliendo", "Viajando", "Llego a su ciudad", "Entregado"];
+    let trackingInfo = {};
+
+    btnPagar.onclick = function() {
+        modalPago.style.display = 'block';
+    }
+
+    spanClosePago.onclick = function() {
+        modalPago.style.display = 'none';
+    }
+
+    spanCloseSeguimiento.onclick = function() {
+        modalSeguimiento.style.display = 'none';
+    }
+
+    btnCerrarSeguimiento.onclick = function() {
+        modalSeguimiento.style.display = 'none';
+    }
+
+    spanCloseRastrear.onclick = function() {
+        modalRastrear.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modalPago) {
+            modalPago.style.display = 'none';
+        } else if (event.target == modalSeguimiento) {
+            modalSeguimiento.style.display = 'none';
+        } else if (event.target == modalRastrear) {
+            modalRastrear.style.display = 'none';
+        }
+    }
+
+    document.getElementById('form-pago').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Generar un número de seguimiento aleatorio
+        const numeroSeguimiento = Math.floor(Math.random() * 1000000000);
+        trackingInfo[numeroSeguimiento] = 0; // Comenzar en el estado "Saliendo"
+        mensajeSeguimiento.innerText = `¡Pago completado exitosamente! Su número de seguimiento es: ${numeroSeguimiento}`;
+        modalPago.style.display = 'none';
+        modalSeguimiento.style.display = 'block';
+    });
+
+    btnRastrear.onclick = function() {
+        modalRastrear.style.display = 'block';
+    }
+
+    document.getElementById('form-rastrear').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const codigoSeguimiento = document.getElementById('codigo-seguimiento').value.trim();
+        if (trackingInfo.hasOwnProperty(codigoSeguimiento)) {
+            estadoCompra.innerText = `El estado de su compra es: ${estadoActual[trackingInfo[codigoSeguimiento]]}`;
+        } else {
+            estadoCompra.innerText = "Código de seguimiento no válido.";
+        }
+    });
+});
+</script>
 <!-- paginacion -->
             <div class="row">
                 <ul class="pagination pagination-lg justify-content-end">
@@ -286,11 +399,11 @@
     </footer>
     <!-- fin de pie-->
     <!-- archivos js-->
-     <script src="/assets/js/bootstrap.bundle.min.js"></script>
-     <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
-     <script src="/assets/js/jquery-1.11.0.min.js"></script>
-     <script src="/assets/js/templatemo.js"></script>
-     <script src="/assets/js/custom.js"></script>
-     <script src="/assets/js/carrito.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/assets/js/jquery-1.11.0.min.js"></script>
+    <script src="/assets/js/templatemo.js"></script>
+    <script src="/assets/js/custom.js"></script>
+    <script src="/assets/js/carrito.js"></script>
 </body>
 </html>
